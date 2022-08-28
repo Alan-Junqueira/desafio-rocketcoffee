@@ -1,4 +1,11 @@
-- Descriptions:
+In this challenge I developed a homepage for a coffee brand.
+
+- Used Languages:
+  # HTML
+  # CSS
+  # JavaScript
+ 
+- Descriptions about the challenger:
   https://efficient-sloth-d85.notion.site/Desafio-RocketCoffee-7802895f0dd44da5a6f71a64badc7e72
 
 - Figma:
