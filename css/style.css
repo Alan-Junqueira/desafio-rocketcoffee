@@ -19,24 +19,13 @@
 body {
   background-color: var(--background);
 }
+
+button {
+  cursor: pointer;
+}
 /*====================================LAPTOP====================================*/
 
-.laptop {
-  margin: 5rem 22rem 0;
-  overflow: hidden;
-}
-
-.laptop .navigation {
-  position: relative;
-  max-width: 91.8rem;
-  margin-bottom: 4rem;
-}
-
-body {
-  position: relative;
-}
-
-body::before {
+div.blur-top {
   position: absolute;
   content: '';
   background: #996DFF;
@@ -46,11 +35,11 @@ body::before {
   filter: blur(250px);
   top: 0;
   right: 0;
-  z-index: 100;
+  z-index: 0;
   border-radius: 0.2rem;
 }
 
-body::after {
+div.blur-bottom {
   position: absolute;
   content: '';
   background: #996DFF;
@@ -60,35 +49,39 @@ body::after {
   filter: blur(250px);
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: -1;
   border-radius: 0.2rem;
 }
 
+.laptop {
+  overflow: hidden;
+  padding: 1.6rem 3.6rem 0;
+  position: relative;
+}
 
+section.navigation {
+  width: 100%;
+  margin-bottom: 4rem;
+  z-index: 999;
+}
 
-.laptop .navigation nav {
+section.navigation img {
+  width: 50px;
+  height: 50px;
+}
+
+section.navigation nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.laptop .navigation nav ul {
+section.navigation nav ul {
   display: flex;
   justify-content: space-between;
-  gap: 3.243rem;
+  gap: 3.2rem;
 }
 
-@media (max-width: 1080px) {
-  .laptop .navigation nav ul {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 1030px) {
-  .laptop .navigation nav ul {
-    gap: 1rem;
-  }
-}
 .laptop .navigation nav ul li a {
   font-family: 'Manrope';
   font-style: normal;
@@ -100,13 +93,30 @@ body::after {
   color: var(--text-color);
 
   white-space: nowrap;
+  position: relative;
+}
+
+.laptop .navigation nav ul li a:hover::before {
+  position: absolute;
+  content: '';
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
 }
 
 .laptop .navigation nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+
   border: 1px solid #8257e5;
   border-radius: 6px;
   background: none;
-  padding: 1.1rem 3.8rem 0.83rem 3.8rem;
+  padding: 1.2rem 3.2rem;
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 800;
@@ -118,12 +128,20 @@ body::after {
 
   color: var(--text-color);
   white-space: nowrap;
+
+  z-index: 100;
+
+  transition: all ease .3s;
 }
 
-@media (max-width: 1150px) {
-  .laptop .navigation nav button {
-    padding: 1rem 0.8rem 0.7rem 1rem;
-  }
+.laptop .navigation nav button i{
+  margin-top: -2px;
+  font-size: 2rem;
+}
+
+.laptop .navigation nav button:hover {
+  background-color:#8257e5 ;
+  border-color: var(--text-color)
 }
 
 .laptop .about {
@@ -173,20 +191,9 @@ body::after {
 }
 
 .laptop footer img {
-  max-width: 80rem;
-}
-
-.laptop::after {
-  z-index: -1;
-  content: '';
-  display: inline-block;
-  width: 25rem;
-  height: 25rem;
-  background: #996dff;
-  filter: blur(400px);
-  position: relative;
-  top: 45rem;
-  left: 0;
+  width: 100%;
+  max-width: 75%;
+  height: auto;
 }
 
 .mobile,
@@ -194,7 +201,7 @@ body::after {
   display: none;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 768px) {
   /*====================================MOBILE====================================*/
   .laptop {
     display: none;
@@ -206,6 +213,7 @@ body::after {
     display: grid;
     grid-template-rows: 5.85rem 8.85rem 12.8rem 8.8rem 3.5rem 9.8rem 12.9rem 2.5rem 33.3rem;
     max-height: 92.6rem;
+    overflow: hidden;
   }
 
   .mobile nav {
@@ -257,11 +265,40 @@ body::after {
   }
 
   .mobile .button button {
-    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+  
     border: 1px solid #8257e5;
     border-radius: 6px;
+    background: none;
+    padding: 1.2rem 3.2rem;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    /* identical to box height */
+  
+    letter-spacing: 0.02em;
+  
+    color: var(--text-color);
+    white-space: nowrap;
+  
+    z-index: 100;
+  
+    transition: all ease .3s;
+  }
 
-    padding: 1rem 3rem;
+  .mobile  button i{
+    margin-top: -2px;
+    font-size: 2rem;
+  }
+
+  .mobile .button button:hover {
+    background-color:#8257e5 ;
+    border-color: var(--text-color)
   }
 
   .mobile .button button a {
@@ -316,18 +353,23 @@ body::after {
       -1px 1px 0 var(--button), 1px 1px 0 var(--button);
   }
 
-  .mobile footer {
+  .mobile div.image  {
     grid-row: 9/10;
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+  .mobile div.image img {
+    width: 100%;
+    max-width: 75%;
+    height: auto;
   }
 
   .mobile::after {
     z-index: -1;
     content: '';
     display: inline-block;
-    width: 35rem;
+    width: 100%;
     height: 25rem;
     background: #996dff;
     filter: blur(400px);
